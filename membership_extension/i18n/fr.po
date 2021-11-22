@@ -67,15 +67,13 @@ msgstr ""
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_res_partner__membership_cancel
 #: model:ir.model.fields,field_description:membership_extension.field_res_users__membership_cancel
-#, fuzzy
 msgid "Cancel Membership Date"
-msgstr "Date de début d'adhésion"
+msgstr "Date d'annulation de l'adhésion"
 
 #. module: membership_extension
 #: model:ir.model.fields.selection,name:membership_extension.selection__res_partner__membership_state__canceled
-#, fuzzy
 msgid "Cancelled Member"
-msgstr "Membre adhérent"
+msgstr "Adhésion annulée"
 
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_membership_membership_category__company_id
@@ -100,16 +98,14 @@ msgstr "Créer le"
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_res_partner__membership_state
 #: model:ir.model.fields,field_description:membership_extension.field_res_users__membership_state
-#, fuzzy
 msgid "Current Membership Status"
-msgstr "Date de début d'adhésion"
+msgstr "État actuel de l'adhésion"
 
 #. module: membership_extension
 #: model:ir.model.fields,help:membership_extension.field_res_partner__membership_start
 #: model:ir.model.fields,help:membership_extension.field_res_users__membership_start
-#, fuzzy
 msgid "Date from which membership becomes active."
-msgstr "Date à partir de laquelle le partenaire a adhéré."
+msgstr "Date à partir de laquelle l'adhésion devient active."
 
 #. module: membership_extension
 #: model:ir.model.fields,help:membership_extension.field_res_partner__membership_start_adhered
@@ -136,9 +132,8 @@ msgstr "Nom à afficher"
 
 #. module: membership_extension
 #: model:ir.model.fields.selection,name:membership_extension.selection__res_partner__membership_state__free
-#, fuzzy
 msgid "Free Member"
-msgstr "Membre"
+msgstr "Membre libre"
 
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_membership_membership_line__date_from
@@ -162,9 +157,8 @@ msgstr "ID"
 
 #. module: membership_extension
 #: model:ir.model.fields.selection,name:membership_extension.selection__res_partner__membership_state__invoiced
-#, fuzzy
 msgid "Invoiced Member"
-msgstr "Ligne de facture"
+msgstr "Membre facturé"
 
 #. module: membership_extension
 #: model:ir.model.fields,help:membership_extension.field_res_partner__membership_state
@@ -241,15 +235,13 @@ msgstr "Adhésion"
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_res_partner__membership_start_adhered
 #: model:ir.model.fields,field_description:membership_extension.field_res_users__membership_start_adhered
-#, fuzzy
 msgid "Membership Adhered Start Date"
 msgstr "Date de début d'adhésion"
 
 #. module: membership_extension
 #: model:product.template,name:membership_extension.membership_2_product_template
-#, fuzzy
 msgid "Membership Bronze"
-msgstr "Lignes d'adhésion"
+msgstr ""
 
 #. module: membership_extension
 #: model:ir.actions.act_window,name:membership_extension.membership_category_action
@@ -267,9 +259,8 @@ msgstr "Catégorie de membre"
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_res_partner__membership_stop
 #: model:ir.model.fields,field_description:membership_extension.field_res_users__membership_stop
-#, fuzzy
 msgid "Membership End Date"
-msgstr "Date de début d'adhésion"
+msgstr "Date de fin d'adhésion"
 
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_membership_membership_line__member_price
@@ -278,9 +269,8 @@ msgstr ""
 
 #. module: membership_extension
 #: model:product.template,name:membership_extension.membership_0_product_template
-#, fuzzy
 msgid "Membership Gold"
-msgstr "Adhésion"
+msgstr ""
 
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_res_partner__membership_last_start
@@ -290,9 +280,8 @@ msgstr "Dernière date de début de l'adhésion"
 
 #. module: membership_extension
 #: model:ir.model,name:membership_extension.model_membership_membership_line
-#, fuzzy
 msgid "Membership Line"
-msgstr "Lignes d'adhésion"
+msgstr "Ligne d'adhésion"
 
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_account_move_line__membership_lines
@@ -306,9 +295,8 @@ msgstr "Produits d'adhésion"
 
 #. module: membership_extension
 #: model:product.template,name:membership_extension.membership_1_product_template
-#, fuzzy
 msgid "Membership Silver"
-msgstr "Lignes d'adhésion"
+msgstr ""
 
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_res_partner__membership_start
@@ -318,9 +306,8 @@ msgstr "Date de début d'adhésion"
 
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_membership_membership_line__state
-#, fuzzy
 msgid "Membership Status"
-msgstr "Date de début d'adhésion"
+msgstr "État de l'adhésion"
 
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_res_partner__membership_category_ids
@@ -349,21 +336,18 @@ msgstr "Nom"
 
 #. module: membership_extension
 #: model:ir.model.fields.selection,name:membership_extension.selection__res_partner__membership_state__none
-#, fuzzy
 msgid "Non Member"
-msgstr "Membre"
+msgstr "Non membre"
 
 #. module: membership_extension
 #: model:ir.model.fields.selection,name:membership_extension.selection__res_partner__membership_state__old
-#, fuzzy
 msgid "Old Member"
-msgstr "Membre"
+msgstr "Ancien membre"
 
 #. module: membership_extension
 #: model:ir.model.fields.selection,name:membership_extension.selection__res_partner__membership_state__paid
-#, fuzzy
 msgid "Paid Member"
-msgstr "Membre"
+msgstr "Membre payant"
 
 #. module: membership_extension
 #: model:ir.model.fields,field_description:membership_extension.field_membership_membership_line__partner
@@ -410,9 +394,8 @@ msgstr ""
 
 #. module: membership_extension
 #: model:ir.model.fields.selection,name:membership_extension.selection__res_partner__membership_state__waiting
-#, fuzzy
 msgid "Waiting Member"
-msgstr "Membre"
+msgstr "Membre en attente"
 
 #. module: membership_extension
 #: code:addons/membership_extension/models/membership_category.py:0
@@ -421,15 +404,3 @@ msgid ""
 "You cannot change the Company, as this Membership Category is used by "
 "Product Template (%s), which has an incompatible assigned Company."
 msgstr ""
-
-#~ msgid "Category"
-#~ msgstr "Catégorie"
-
-#~ msgid "Invoice"
-#~ msgstr "Facture"
-
-#~ msgid "Invoice Line"
-#~ msgstr "Ligne de facture"
-
-#~ msgid "membership.membership_line"
-#~ msgstr "membership.membership_line"
