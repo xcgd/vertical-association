@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [membership_extension](membership_extension/) | 17.0.1.0.3 |  | Improves user experience of membership addon
 [membership_initial_fee](membership_initial_fee/) | 17.0.1.0.0 | [![rafaelbn](https://github.com/rafaelbn.png?size=30px)](https://github.com/rafaelbn) [![edlopen](https://github.com/edlopen.png?size=30px)](https://github.com/edlopen) | Initial fee for memberships
 [membership_variable_period](membership_variable_period/) | 17.0.1.0.1 |  | Variable period for memberships
+[website_membership_random_order](website_membership_random_order/) | 17.0.1.0.0 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Online Members Directory - Random order
 
 [//]: # (end addons)
 
