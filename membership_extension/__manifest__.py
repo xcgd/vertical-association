@@ -7,7 +7,7 @@
 {
     "name": "Membership extension",
     "summary": "Improves user experience of membership addon",
-    "version": "17.0.1.0.3",
+    "version": "17.0.1.1.0",
     "category": "Membership",
     "author": "Tecnativa, Onestein, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/vertical-association",
@@ -21,6 +21,7 @@
         "views/membership_category_view.xml",
         "views/membership_views.xml",
         "views/product_template_view.xml",
+        "views/product_product_view.xml",
         "views/res_partner_view.xml",
         "data/membership_category_data.xml",
     ],

@@ -14,8 +14,10 @@ class MembershipLine(models.Model):
     _order = "date_to desc, id desc"
 
     category_id = fields.Many2one(
+        compute="_compute_category",
         comodel_name="membership.membership_category",
-        related="membership_id.membership_category_id",
+        store=True,
+        readonly=True,
     )
     date_from = fields.Date(readonly=False)
     date_to = fields.Date(readonly=False)
@@ -34,6 +36,21 @@ class MembershipLine(models.Model):
             "Error ! Ending Date cannot be set before Beginning Date.",
         ),
     ]
+
+    @api.depends(
+        "membership_id.membership_category_id",
+        "membership_id.product_membership_category_id",
+    )
+    def _compute_category(self):
+        for partner in self:
+            membership = partner.membership_id
+            variant_category = membership.product_membership_category_id
+
+            partner.category_id = (
+                variant_category
+                if variant_category
+                else membership.membership_category_id
+            )
 
     @api.depends("membership_id")
     def _compute_member_price(self):

@@ -31,7 +31,7 @@ Membership extension
 This module extends Odoo's membership management with the following
 features:
 
--  Membership category
+-  Membership category for products and product variants
 -  Membership lines editable
 -  Do not calculate membership state from invoice status
 -  Start date of last membership period
@@ -51,8 +51,8 @@ Configuration
 =============
 
 Users can define membership categories in Association > Configuration >
-Membership Categories Then go to membership products and set a category
-to each one.
+Membership Categories Then go to membership products and products
+variants and set a category to each one.
 
 Usage
 =====
@@ -61,7 +61,10 @@ Membership categories allow to classify memberships by types, allowing a
 partner to be member or not of the different categories. For example, if
 you have several levels of partnership (Starter, Silver, Gold) and one
 product for each one, then partners who buy Silver product will have
-Silver membership category. Afterwords, you can filter Silver members.
+Silver membership category. The partner membership category is computed
+from the membership category defined on the product variant first, and
+if not filled, from the one defined on the product. Afterwords, you can
+filter Silver members.
 
 Membership lines are created when a membership product is invoiced, like
 in Odoo standard version. But now users can create a new membership line

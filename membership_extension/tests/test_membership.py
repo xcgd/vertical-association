@@ -60,8 +60,14 @@ class TestMembership(common.TransactionCase):
         cls.next_month = date_today + timedelta(days=30)
         cls.yesterday = date_today - timedelta(days=1)
         cls.category_gold = cls.env.ref("membership_extension.membership_category_gold")
+        cls.category_gold_2 = cls.env.ref(
+            "membership_extension.membership_category_gold_2"
+        )
         cls.category_silver = cls.env.ref(
             "membership_extension.membership_category_silver"
+        )
+        cls.category_silver_2 = cls.env.ref(
+            "membership_extension.membership_category_silver_2"
         )
         cls.partner = cls.env["res.partner"].create(
             {
@@ -80,6 +86,7 @@ class TestMembership(common.TransactionCase):
                 "membership_date_from": fields.Date.today(),
                 "membership_date_to": cls.next_month,
                 "membership_category_id": cls.category_gold.id,
+                "product_membership_category_id": cls.category_gold_2.id,
                 "list_price": 100.00,
             }
         )
@@ -91,6 +98,7 @@ class TestMembership(common.TransactionCase):
                 "membership_date_from": fields.Date.today(),
                 "membership_date_to": cls.next_two_months,
                 "membership_category_id": cls.category_silver.id,
+                "product_membership_category_id": cls.category_silver_2.id,
                 "list_price": 50.00,
             }
         )
@@ -198,8 +206,8 @@ class TestMembership(common.TransactionCase):
                 "state": "invoiced",
             }
         )
-        self.assertEqual(self.category_gold, self.partner.membership_category_ids)
-        self.assertEqual(self.category_gold, self.child.membership_category_ids)
+        self.assertEqual(self.category_gold_2, self.partner.membership_category_ids)
+        self.assertEqual(self.category_gold_2, self.child.membership_category_ids)
         line_two = self.env["membership.membership_line"].create(
             {
                 "membership_id": self.silver_product.id,
@@ -212,11 +220,20 @@ class TestMembership(common.TransactionCase):
             }
         )
         self.assertEqual(
-            self.category_gold + self.category_silver,
+            self.category_gold_2 + self.category_silver_2,
             self.partner.membership_category_ids,
         )
         self.assertEqual(
-            self.category_gold + self.category_silver,
+            self.category_gold_2 + self.category_silver_2,
+            self.child.membership_category_ids,
+        )
+        self.silver_product.product_membership_category_id = False
+        self.assertEqual(
+            self.category_gold_2 + self.category_silver,
+            self.partner.membership_category_ids,
+        )
+        self.assertEqual(
+            self.category_gold_2 + self.category_silver,
             self.child.membership_category_ids,
         )
         line_one.write({"state": "canceled"})
@@ -459,6 +476,51 @@ class TestMembership(common.TransactionCase):
             self.assertTrue(template.membership_category_id)
             template.company_id = company_b
             self.assertFalse(template.membership_category_id)
+
+    def test_category_multicompany_variant(self):
+        company_a = self.env["res.company"].create({"name": "Test company A"})
+        company_b = self.env["res.company"].create({"name": "Test company B"})
+
+        # set all the products for Gold Membership to Company B
+        products = self.env["product.product"].search(
+            [("product_membership_category_id", "in", self.category_gold_2.ids)]
+        )
+        for product in products:
+            product.company_id = company_b
+
+        # Gold Membership Category cannot be assigned to Company A
+        for product in products:
+            product.product_membership_category_id = self.category_gold_2
+            self.assertNotEqual(
+                product.product_membership_category_id.company_id, company_a
+            )
+        with self.assertRaises(ValidationError):
+            self.category_gold_2.company_id = company_a
+
+        # force Gold Membership Category assignment to Company A
+        self.category_gold_2.with_context(
+            bypass_company_validation=True
+        ).company_id = company_a
+
+        # Company can be removed from any Membership Category
+        self.category_gold_2.company_id = False
+
+        # set all the products for Gold Membership to Company A
+        products = self.env["product.product"].search(
+            [("product_membership_category_id", "in", self.category_gold_2.ids)]
+        )
+        for product in products:
+            self.assertTrue(product.product_membership_category_id)
+            product.company_id = company_a
+
+        # Gold Membership Category can now be assigned to Company A
+        self.category_gold_2.company_id = company_a
+
+        # test onchange
+        for product in products:
+            self.assertTrue(product.product_membership_category_id)
+            product.company_id = company_b
+            self.assertFalse(product.product_membership_category_id)
 
     def test_no_dates(self):
         with self.assertRaises(ValidationError):

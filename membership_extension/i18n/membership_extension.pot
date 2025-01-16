@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-16 17:44+0000\n"
+"PO-Revision-Date: 2025-01-16 17:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -65,6 +67,11 @@ msgstr ""
 #. module: membership_extension
 #: model:ir.model.fields.selection,name:membership_extension.selection__res_partner__membership_state__canceled
 msgid "Cancelled Member"
+msgstr ""
+
+#. module: membership_extension
+#: model:ir.model.fields,field_description:membership_extension.field_membership_membership_line__category_id
+msgid "Category"
 msgstr ""
 
 #. module: membership_extension
@@ -140,6 +147,11 @@ msgstr ""
 #. module: membership_extension
 #: model:membership.membership_category,name:membership_extension.membership_category_gold
 msgid "Gold"
+msgstr ""
+
+#. module: membership_extension
+#: model:membership.membership_category,name:membership_extension.membership_category_gold_2
+msgid "Gold - 2"
 msgstr ""
 
 #. module: membership_extension
@@ -285,6 +297,12 @@ msgid "Membership Lines"
 msgstr ""
 
 #. module: membership_extension
+#: model:ir.actions.act_window,name:membership_extension.action_membership_product_variants
+#: model:ir.ui.menu,name:membership_extension.menu_membership_product_variants
+msgid "Membership Product Variants"
+msgstr ""
+
+#. module: membership_extension
 #: model:product.template,name:membership_extension.membership_1_product_template
 msgid "Membership Silver"
 msgstr ""
@@ -302,7 +320,6 @@ msgstr ""
 
 #. module: membership_extension
 #: model:ir.model,name:membership_extension.model_membership_membership_category
-#: model:ir.model.fields,field_description:membership_extension.field_membership_membership_line__category_id
 #: model:ir.model.fields,field_description:membership_extension.field_product_product__membership_category_id
 #: model:ir.model.fields,field_description:membership_extension.field_product_template__membership_category_id
 #: model_terms:ir.ui.view,arch_db:membership_extension.membership_product_search_form_view
@@ -350,8 +367,19 @@ msgid "Product Variant"
 msgstr ""
 
 #. module: membership_extension
+#: model:ir.model.fields,field_description:membership_extension.field_product_product__product_membership_category_id
+#: model_terms:ir.ui.view,arch_db:membership_extension.membership_product_variant_search_form_view
+msgid "Product membership category"
+msgstr ""
+
+#. module: membership_extension
 #: model:membership.membership_category,name:membership_extension.membership_category_silver
 msgid "Silver"
+msgstr ""
+
+#. module: membership_extension
+#: model:membership.membership_category,name:membership_extension.membership_category_silver_2
+msgid "Silver - 2"
 msgstr ""
 
 #. module: membership_extension
@@ -373,6 +401,15 @@ msgstr ""
 #. module: membership_extension
 #: model:ir.model.fields.selection,name:membership_extension.selection__res_partner__membership_state__waiting
 msgid "Waiting Member"
+msgstr ""
+
+#. module: membership_extension
+#. odoo-python
+#: code:addons/membership_extension/models/membership_category.py:0
+#, python-format
+msgid ""
+"You cannot change the Company, as this Membership Category is used by "
+"Product Product (%s), which has an incompatible assigned Company."
 msgstr ""
 
 #. module: membership_extension

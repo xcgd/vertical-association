@@ -35,3 +35,21 @@ class MembershipCategory(models.Model):
                 )
                 % fields.first(templates).name
             )
+
+        products = (
+            self.env["product.product"]
+            .search([("product_membership_category_id", "in", categories.ids)])
+            .filtered(
+                lambda t: t.company_id
+                and t.company_id != t.product_membership_category_id.company_id
+            )
+        )
+        if products:
+            raise ValidationError(
+                _(
+                    "You cannot change the Company, as this "
+                    "Membership Category is used by Product Product (%s), "
+                    "which has an incompatible assigned Company."
+                )
+                % fields.first(products).name
+            )

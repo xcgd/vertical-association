@@ -46,4 +46,9 @@
             </xpath>
         </field>
     </record>
+
+    <record id="membership.menu_membership_products" model="ir.ui.menu">
+        <field name="sequence" eval="10" />
+    </record>
+
 </odoo>

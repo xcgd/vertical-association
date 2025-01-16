@@ -5,7 +5,13 @@
     <record id="membership_category_silver" model="membership.membership_category">
         <field name="name">Silver</field>
     </record>
+    <record id="membership_category_silver_2" model="membership.membership_category">
+        <field name="name">Silver - 2</field>
+    </record>
     <record id="membership_category_gold" model="membership.membership_category">
         <field name="name">Gold</field>
+    </record>
+    <record id="membership_category_gold_2" model="membership.membership_category">
+        <field name="name">Gold - 2</field>
     </record>
 </odoo>

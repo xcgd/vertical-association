@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2016 Antonio Espinosa <antonio.espinosa@tecnativa.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <record id="membership_product_variants_tree" model="ir.ui.view">
+        <field name="name">Membership tree for product variants</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="membership.membership_products_tree" />
+        <field name="arch" type="xml">
+            <field name="membership_category_id" position="after">
+                <field name="product_membership_category_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="membership_product_variants_kanban" model="ir.ui.view">
+        <field name="name">Membership kanban for product variants</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="membership.membership_products_kanban" />
+        <field name="arch" type="xml">
+            <field name="list_price" position="after">
+                <field name="product_membership_category_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="membership_product_variants_form" model="ir.ui.view">
+        <field name="name">Membership form for product variants</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="membership.membership_products_form" />
+        <field name="arch" type="xml">
+            <field name="membership_category_id" position="replace">
+                <field name="product_membership_category_id" options="{'no_create': True}" />
+            </field>
+        </field>
+    </record>
+
+    <record id="membership_product_variant_search_form_view" model="ir.ui.view">
+        <field name="name">Membership search for product variants</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="membership.membership_product_search_form_view" />
+        <field name="arch" type="xml">
+            <field name="membership_category_id" position="after">
+                <field name="product_membership_category_id" />
+            </field>
+            <xpath expr="//search//group//filter[@name='membership_category']" position="after">
+                <filter
+                    name="product_membership_category"
+                    string="Product membership category"
+                    domain="[]"
+                    context="{'group_by':'product_membership_category_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_membership_product_variants">
+        <field name="name">Membership Product Variants</field>
+        <field name="res_model">product.product</field>
+        <field name="domain">[('membership','=',True), ('type', '=', 'service')]</field>
+        <field name="context">{'membership':True, 'type':'service', 'default_membership': True, 'default_detailed_type': 'service'}</field>
+        <field name="search_view_id" ref="membership_product_variant_search_form_view"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_membership_product_variant_view_tree">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="membership_product_variants_tree"/>
+        <field name="act_window_id" ref="action_membership_product_variants"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_membership_product_variant_view_form">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="membership_product_variants_form"/>
+        <field name="act_window_id" ref="action_membership_product_variants"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_membership_product_variant_view_kanban">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="membership_product_variants_kanban"/>
+        <field name="act_window_id" ref="action_membership_product_variants"/>
+    </record>
+
+    <menuitem name="Membership Product Variants" id="menu_membership_product_variants"
+        parent="membership.menu_marketing_config_association"
+        action="action_membership_product_variants"
+        sequence="11" />
+</odoo>
